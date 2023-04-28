@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 interface Produto{
   idproduto: number,
@@ -15,10 +16,12 @@ interface Produto{
 
 export class ProdutoService {
 
+  private URL = "https://etecsalesgomespam-default-rtdb.firebaseio.com/produto/.json";
+
   constructor(private http: HttpClient) { }
 
-  getProdutos(){
-
+  getProdutos():Observable<Produto[]>{
+    return this.http.get<Produto[]>(this.URL);
   }
 
 }
