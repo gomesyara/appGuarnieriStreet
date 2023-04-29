@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-interface Produto{
+export interface Produto{
   idproduto: number,
   fkmarca: number,
   nome: string,
