@@ -13,21 +13,22 @@ export class HomePage implements OnInit {
     private localizacaoService: LocalizacaoService) {}
 
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition((position)=>{
+    setInterval(() => {
+      navigator.geolocation.getCurrentPosition((position)=>{
       console.log(position);
-      this.localizacaoService.inserir({
-        idusuario:19,
-        longitude: position.coords.longitude,
-        latitude: position.coords.latitude,
-        horario: new Date()
-      }).subscribe();
-    })
-
-    this.produtoService.getProdutos().subscribe(
-      (produtos) => {
-        this.listaProdutos = produtos;
-      }
-    )
-  }
-
+        this.localizacaoService.inserir({
+          idusuario: 19,
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude,
+          nome: "Yara",
+          horario: new Date()
+        }).subscribe();
+      })
+   },2000);
+ }
 }
+    // this.produtoService.getProdutos().subscribe(
+    //   (produtos) => {
+    //     this.listaProdutos = produtos;
+    //   }
+    // )
